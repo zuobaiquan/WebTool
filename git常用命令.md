@@ -1,9 +1,7 @@
 ## 匹配字符表
 
-```
+```javascript
 修改了文件： git add .      //将文件添加到暂存区
-
-
 
 删除add操作:git rm -r --cached filename //
 
@@ -14,7 +12,6 @@
 撤销修改：git checkout --filename  //丢弃工作区的修改
 
 如果已经提交到暂存区：git reset HEAD filename //把暂存区的修改撤销掉（unstage），重新放回工作区
-
 
 创建分支：git checkout -b      //创建并切换分支
 
@@ -29,7 +26,6 @@
 如果合并的时候有冲突：解决冲突
 
 删除远程分支：git push origin :<name>
-
 
 
 保存当前工作场景：git stash
@@ -57,10 +53,11 @@
 关键：在项目的根目录（跟.git文件夹所在目录同层）建立.gitignore文件，在里面声明即可。 
 譬如我要忽略当前项下的所有dll文件，及runtime文件夹里所有文件： 
 
+```javascript
 ignore these files
-
 *.dll 
 runtime/* 
+```
 
 如果之前文件已提交过，则需要先清除原文件，针对上文做的清理如下： 
 $ git rm *.dll 
