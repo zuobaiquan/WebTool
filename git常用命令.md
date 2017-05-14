@@ -69,5 +69,14 @@ $ git rm -r runtime
 
 
 
+
+
+```javascript
+由于某些原因，国内网络安装ionic和cordova会出现错误，因此需要跳过某些墙，采用淘宝镜像，打开终端输入一下命令即可
+npm install -g cnpm --registry=https://registry/npm.taobao.org/
+```
+
+
+
 # 
 
