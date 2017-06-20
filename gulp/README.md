@@ -62,13 +62,13 @@
 >- 用npm init命令（npm init 在项目中引导创建一个package.json文件）
 >- 也可以复制之前项目的创建好的 package.json
 
-我们用npm init 的方法来创建package.json（安装包的信息可保持到项目的package.json文件中，以便后续的其它的项目开发或者他人合作使用，也说package.json在项目中是必不可少的。）
+我们用npm init 的方法来创建package.json（安装包的信息可保持到项目的package.json文件中，以便后续的其它的项目开发或者他人合作使用）
 
 在终端将当前目录切换至项目所在目录，然后输入`npm init`，一路回车，最终在项目根目录下生成package.json:
 
 ```bash
 {
-  "name": "gulp_test", /*项目名,切记这里命名不要与模块一样，如命名为gulp，要地安装gulp时就会出错*/
+  "name": "gulp_test", /*项目名,切记这里命名不要与模块一样，如命名为gulp，要是安装gulp时就会出错*/
   "version": "1.0.0", /*版本号*/
   "description": "", /*描述*/
   "main": "index.js",
@@ -80,7 +80,7 @@
 }
 ```
 
-> 注释是我自己加的，npm init生成是没有注释的，而且json文件也不支持注释，这点得注意！
+> 注释是额外加的，npm init 生成是没有注释的，而且json文件也不支持注释，这点得注意！
 
 ## 5. 本地安装gulp及gulp插件
 
@@ -138,11 +138,13 @@ npm install gulp --save-dev
 var gulp = require('gulp');
 // 引入组件
 var jshint = require('gulp-jshint');//检查js
+//注意 安装npm install --save-dev jshint gulp-jshint,不能执行npm install --save-dev gulp-jshint，否则报错
 var sass   = require('gulp-sass');  //编译Sass
 var concat = require('gulp-concat');//合并
 var uglify = require('gulp-uglify');//压缩JS
 var rename = require('gulp-rename');//重命名
 // 检查js脚本的任务
+//jshint是用来检测javascript的语法错误的，在grunt和gulp都有这个插件
 gulp.task('lint', function() {
     gulp.src('./js/*.js') //可配置检查脚本的具体名字
         .pipe(jshint())
