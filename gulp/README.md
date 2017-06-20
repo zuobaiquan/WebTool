@@ -4,15 +4,15 @@
 
 而规范需要一定的过程，我们就先从代码质量，代码管理上入手。
 
-1. 对代码（html，css，js）进行语法检查
-2. 对图片，代码进行压缩
-3. 对sass。less 的css预处理器进行编译
-4. 期望代码有改动后，能自动刷新页面
-5. ...
+>1. 对代码（html，css，js）进行语法检查
+>2. 对图片，代码进行压缩
+>3. 对sass。less 的css预处理器进行编译
+>4. 期望代码有改动后，能自动刷新页面
+>5. ...
 
-这些操作，我们可以通过人工来完成，但是效率真的低到没朋友，难道语法检查你要自己一行一行的`review`，或则是拜托你的同事帮你一行一行的 `review` 么。如果你让我做这个，我肯定和你绝交...但是 `review` 的目的是帮助我们写出高质量的代码。这是必不可少的，所以我们期望能有一个自动帮我们实现代码检测压缩的工具。只要一个命令，你就能轻松的实现代码压缩，图片压缩，`css`预处理器编译等原来需要你去人工完成的任务，是不是爽到爆炸。
+这些操作，我们可以通过人工来完成，但是效率真的低到没朋友。
 
-在项目自动化构建工具中，大家用得比较多的，分别是`grunt`，`gulp`。与这些自动化工具配套的包管理工具呢，通常还有`npm`。`node`包含了`npm`的包，所以只要你的系统里安装的 `node`，你就可以在你的控制台里通过 npm install 来安装你的项目依赖。还有的就是最近流行起来的 `webpack` 模块管理工具,大家对`webpack` 的反应也很好，所以我们打算在项目开发的时候把 gulp 和 webpack 一起用起来，并把研究后的搭建流程写成教程。这次分享的是gulp的搭建，下次等我的后台项目开始用 webpack 的时候，再来分享一篇。
+在项目自动化构建工具中，目前用的比较多的是`grunt`，`gulp`。与这些自动化工具配套的包管理工具呢，通常还有`npm`。`node`包含了`npm`的包，所以只要系统里安装了 `node`，就可通过 npm install 来安装需要的项目依赖。当然现在流行起来的还有 `webpack` 模块管理工具
 
 ## 1. 安装nodejs
 
@@ -50,7 +50,11 @@
 ## 4. 配置项目
 
 下面以一个简单案例来做演示：创一个gulp文件夹作为项目根目录，项目结构如下：!
+
 ![img](https://segmentfault.com/img/bVvRcE)
+
+
+
 我们以常用的 gulp-uglify、gulp-concat、gulp-minify-css为例。
 先是配置package.json文件，有三种方法：
 
@@ -61,7 +65,7 @@
 我们用npm init 的方法来创建package.json
 在终端将当前目录切换至项目所在目录，然后输入`npm init`，一路回车，最终在项目根目录下生成package.json:
 
-```
+```bash
 {
   "name": "gulp_test", /*项目名,切记这里命名不要与模块一样，如命名为gulp，要地安装gulp时就会出错*/
   "version": "1.0.0", /*版本号*/
@@ -81,9 +85,8 @@
 
 ### 本地安装gulp
 
-```
+```bash
 npm install gulp --save-dev
-
 ```
 
 安装完成后，我们再看项目中的变化：如图：
@@ -170,11 +173,6 @@ gulp.task('default', function(){
         gulp.run('lint','scripts');
     });
 });
-
-
-
-
-
 ```
 
 > 实际的项目肯定没这么简单，想想我们一般不可能对某几个文件操作，应该是对一批文件操作，那样的涉及到文件匹配的问题了，暂时不展开了。
@@ -229,15 +227,19 @@ gulp.task(name[, deps], fn)     参数说明
 举个栗子：
 
 ```javascript
+//执行gulp task1 命令执行task1的任务
 gulp.task('task1',function(){
     console.log("task1 done");
 });
+//执行gulp task2 命令执行task2的任务
 gulp.task('task2',function(){
     console.log("task2 done");
 });
+//执行gulp task3 命令执行task3的任务
 gulp.task('task3',function(){
     console.log("task3 done");
 });
+//执行gulp build 命令同时执行task1、task2、task3三个任务
 gulp.task('build',['task1','task2','task3'],function(){
     console.log("build done");
 });

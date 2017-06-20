@@ -19,15 +19,19 @@ var concat = require('gulp-concat');
 // });
 // gulp.task('default',['minify-css','script']); 
 
+//执行gulp task1 命令执行task1的任务
 gulp.task('task1',function(){
     console.log("task1 done");
 });
+//执行gulp task2 命令执行task2的任务
 gulp.task('task2',function(){
     console.log("task2 done");
 });
+//执行gulp task3 命令执行task3的任务
 gulp.task('task3',function(){
     console.log("task3 done");
 });
+//执行gulp build 命令同时执行task1、task2、task3三个任务
 gulp.task('build',['task1','task2','task3'],function(){
     console.log("build done");
 });
