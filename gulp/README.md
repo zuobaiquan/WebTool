@@ -58,11 +58,12 @@
 我们以常用的 gulp-uglify、gulp-concat、gulp-minify-css为例。
 先是配置package.json文件，有三种方法：
 
-- 可以用记事本之类的创建一个
-- 用npm init建
-- 也可以复制之前项目的创建好的package.json
+>- 可以用记事本之类的创建一个
+>- 用npm init命令（npm init 在项目中引导创建一个package.json文件）
+>- 也可以复制之前项目的创建好的 package.json
 
-我们用npm init 的方法来创建package.json
+我们用npm init 的方法来创建package.json（安装包的信息可保持到项目的package.json文件中，以便后续的其它的项目开发或者他人合作使用，也说package.json在项目中是必不可少的。）
+
 在终端将当前目录切换至项目所在目录，然后输入`npm init`，一路回车，最终在项目根目录下生成package.json:
 
 ```bash
